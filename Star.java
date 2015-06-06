@@ -2,7 +2,7 @@ public class Star extends Art{
     public Star(ColorPair cp){super(cp);}
 
     public void drew(float x, float y){
-      x+=.5; y+= .5;
+      x +=.5f; y += .5f;
      p.stroke(ca); p.fill(cb);
     p.strokeWeight(.0143f);
     float s = 16f;//5/4.0f*8f;

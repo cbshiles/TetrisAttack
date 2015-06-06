@@ -3,7 +3,7 @@ import java.util.Random;
 
 
 public class Board {
-    static final int a=12, b=5;
+    static final int a=13, b=8;
     static final int xd=6, yd=a+b+1;
     static final int tb = xd*yd; //total # of block slots
     int ptr=0;
