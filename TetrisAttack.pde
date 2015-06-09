@@ -4,14 +4,6 @@ import java.util.*;
 float oh=0, ow=0, sk;
 Board board;
 
-ColorPair getCP(ArrayList<ColorPair> arr){
-  Random rando = new Random(System.currentTimeMillis());
-  int x = rando.nextInt(arr.size());
-   ColorPair cp =  arr.get(x);
-    arr.remove(x);
-    return cp;
-}
-
 void setup() {
   size(800, 800);
   //noLoop();
