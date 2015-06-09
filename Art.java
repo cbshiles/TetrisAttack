@@ -10,7 +10,6 @@ public abstract class Art {
 
   public void draw(float x, float y)
   {
-    p.println("XX"+x+" : "+y);
     p.fill(ca);
     p.stroke(cb);
     p.strokeWeight(sw);

@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Random;
-
+import java.util.*;
 
 public class Board {
     static final int a=13, b=8;
@@ -20,10 +18,8 @@ public class Board {
 	for (int i=0; i<tb; i++)
 	    blocks.add(null);
 
-
 	rando = new Random(System.currentTimeMillis());
 	fillRow();
-	
     }
 
     private Block get(int x, int y){
