@@ -9,7 +9,7 @@ public class Xi extends Art{
     p.fill(cb);
     p.rect(x, y, s, s, s/10);
     p.fill(ca);
-    p.rect(x-.005f, y+s/10, s+.01f, s*8f/10, s/6.6f);
+    p.rect(x-.01f, y+s/10, s+.02f, s*8f/10, s/6.6f);
     p.fill(cb);
     float xr=s/3.0f, yr=s/7.6f;
     p.rect(x+m-xr, y+m-yr, 2.0f*xr, 2.0f*yr);

@@ -15,27 +15,16 @@ void setup() {
 
   //ColorPair.colour == color
   
-  ArrayList<ColorPair> colors = new  ArrayList<ColorPair>();
-  colors.add(new ColorPair(color(100, 233, 33), .4)); //lamdba
-  colors.add(new ColorPair(color(70, 30, 5), .9)); //Delta
-  colors.add(new ColorPair(color(50, 50, 140), color(255, 220, 155))); //Xi
-  colors.add(new ColorPair(color(67, 127, 127), .8)); //Star
-   int bl = 195;
-  colors.add(new ColorPair(color(bl), 1-bl/255f)); //Ying_Yang
-  colors.add(new ColorPair(color(254, 220, 6), .4));//Nstar
-  
-  
-  
   ArrayList<Art> drawings = new ArrayList<Art>();
-  drawings.add(new Lambda(getCP(colors)));
-  drawings.add(new Delta(getCP(colors)));
-  drawings.add(new Xi(getCP(colors)));
-  drawings.add(new Star(getCP(colors)));
-
-  drawings.add(new YinYang(getCP(colors)));
-  drawings.add(new Nstar(getCP(colors)));
+  drawings.add(new Lambda(new ColorPair(color(100, 233, 33), .4)));
+  drawings.add(new Delta(new ColorPair(color(70, 30, 5), .9)));
+  drawings.add(new Xi(new ColorPair(color(50, 50, 140), color(255, 220, 155))));
+  drawings.add(new Star(new ColorPair(color(67, 127, 127), .8)));
+  int bl = 195;
+  drawings.add(new YinYang(new ColorPair(color(bl), 1-bl/255f)));
+  drawings.add(new Nstar(new ColorPair(color(254, 220, 6), .4)));
   
-    board = new Board(height, drawings);
+  board = new Board(height, drawings);
   Art.p = this;
 }
 
