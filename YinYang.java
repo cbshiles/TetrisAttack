@@ -48,11 +48,11 @@ public class YinYang extends Art {
 //background
   cirk(x+.5f, y+.5f, .4f, p.HALF_PI, 3*p.HALF_PI);
   //other point .7 .3
-  p.vertex(x+.5f,y+sw/2);
-  p.vertex(x+sw/2,y+sw/2);
+  p.vertex(x+.5f,y-sw/2);
+  p.vertex(x,y-sw/2);
   
-  p.vertex(x+sw/2,y+1-sw);
-  p.vertex(x+.5f,y+1-sw);
+  p.vertex(x,y+1);
+  p.vertex(x+.5f,y+1);
   
 
   p.endShape();
