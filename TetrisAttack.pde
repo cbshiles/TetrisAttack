@@ -30,6 +30,7 @@ void setup() {
 }
 
 void draw() {
+  clear();
   //translate((width - height/2)/2,0); 
   if (oh != height || ow != width) {
     oh = height; ow=width;
