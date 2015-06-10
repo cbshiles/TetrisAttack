@@ -10,7 +10,9 @@ public class Board {
   ArrayList<Block> blocks;
   ArrayList<Art> arts;
   Random rando;
-
+  int randP=-1; //previously selected random art
+  boolean twice = false; //has the same art been selected twice in a row?
+  
   public Board(int h, ArrayList<Art> aarts) {
     blocks = new ArrayList<Block>(tb);
     arts = aarts;
@@ -31,10 +33,22 @@ public class Board {
     for (i=0; i<xd; i++) {
       blocks.set(p+i, new Block(randArt()));
     }
+    randP = -1; twice = false;
   }
 
   private Art randArt() {
-    return arts.get(rando.nextInt(arts.size()));
+    int roll;
+  if (! twice){
+    roll = rando.nextInt(arts.size());
+    if (roll == randP) twice = true;
+    else randP = roll;
+  } else {
+    roll = rando.nextInt(arts.size()-1);
+    if (roll >= randP) roll++;
+    randP = roll;
+    twice = false;
+  }
+    return arts.get(roll);
   }
 
   void draw() {
@@ -50,7 +64,7 @@ public class Board {
 
     //dark row
     for (ix=0; ix<xd; ix++) {
-      get(ix, iy).darkDraw((float)ix, iy+yp);
+      get(ix, iy).darkDraw(ix, iy+yp);
     }
 
     yp -= ii;
