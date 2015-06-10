@@ -8,6 +8,18 @@ public class ColorPair {
     public static int colour(int r, int g, int b){
 	return b+256*(g+256*r) | 0xFF000000;  
     }
+    
+    public ColorPair dim(){
+    return new ColorPair(dimOne(ca), dimOne(cb));
+    }
+    
+    private int dimOne(int c){
+     int r = c >> 16 & 255;
+    int g = c >> 8 & 255;
+    int b = c & 255;
+    int f = 3;
+    return colour(r/f, g/f, b/f);
+    }
 
     public static int bright(int c, float br){
 	int r = c >> 16 & 255;
