@@ -4,12 +4,14 @@ import java.util.*;
 float oh=0, ow=0, sk;
 Board board;
 
+color bkgd = color(165);
+
 void setup() {
   size(800, 800);
   //noLoop();
 
   frame.setResizable(true);
-  //background(255);
+  
   frameRate(15);
 
 
@@ -24,12 +26,12 @@ void setup() {
   drawings.add(new YinYang(new ColorPair(color(bl), 1-bl/255f)));
   drawings.add(new Nstar(new ColorPair(color(254, 220, 6), .4)));
   
-  board = new Board(height, drawings);
+  board = new Board(height, drawings, bkgd);
   Art.p = this;
 }
 
 void draw() {
-  clear();
+  clear(); background(bkgd);
   //translate((width - height/2)/2,0); 
   if (oh != height || ow != width) {
     oh = height; ow=width;
@@ -39,9 +41,8 @@ void draw() {
   }
   
 
-  translate(width*3/10, height/8);
-  scale(sk, sk);
 
-  board.draw();
+
+  board.draw(ow,oh,sk);
 }
 

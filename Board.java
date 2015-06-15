@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Board {
-  static final int a=13, b=8;
+  static final int a=12, b=8;
   static final int xd=6, yd=a+b+1;
   static final int tb = xd*yd; //total # of block slots
   int ptr=0;
@@ -13,9 +13,12 @@ public class Board {
   int randP=-1; //previously selected random art
   boolean twice = false; //has the same art been selected twice in a row?
   
-  public Board(int h, ArrayList<Art> aarts) {
+  int bkgd;
+
+  public Board(int h, ArrayList<Art> aarts, int bc) {
     blocks = new ArrayList<Block>(tb);
     arts = aarts;
+    bkgd = bc;
 
     for (int i=0; i<tb; i++)
       blocks.add(null);
@@ -33,25 +36,31 @@ public class Board {
     for (i=0; i<xd; i++) {
       blocks.set(p+i, new Block(randArt()));
     }
-    randP = -1; twice = false;
+    randP = -1; 
+    twice = false;
   }
 
   private Art randArt() {
     int roll;
-  if (! twice){
-    roll = rando.nextInt(arts.size());
-    if (roll == randP) twice = true;
-    else randP = roll;
-  } else {
-    roll = rando.nextInt(arts.size()-1);
-    if (roll >= randP) roll++;
-    randP = roll;
-    twice = false;
-  }
+    if (! twice) {
+      roll = rando.nextInt(arts.size());
+      if (roll == randP) twice = true;
+      else randP = roll;
+    } else {
+      roll = rando.nextInt(arts.size()-1);
+      if (roll >= randP) roll++;
+      randP = roll;
+      twice = false;
+    }
     return arts.get(roll);
   }
 
-  void draw() {
+  void draw(float w, float h, float sk) {
+
+    Art.p.pushMatrix();
+    Art.p.translate(w*3/10, h/8);
+    Art.p.scale(sk, sk);
+
     Block b;
 
     int iy, ix;
@@ -76,6 +85,13 @@ public class Board {
       }
       fillRow();
     }
+    
+    Art.p.fill(bkgd);
+    Art.p.noStroke();
+    Art.p.rect(-.1f,a+1f,6.2f,1);
+    Art.p.rect(-.1f,0,6.2f,1);
+    
+    Art.p.popMatrix();
   }
 }
 
